@@ -1,0 +1,257 @@
+[
+  {
+    "Issues": [
+      {
+        "Id": 727743098,
+        "NodeId": "MDExOlB1bGxSZXF1ZXN0NTA4NTc3MzE1",
+        "Url": "https://api.github.com/repos/dotnet/aspnetcore/issues/27123",
+        "HtmlUrl": "https://github.com/dotnet/aspnetcore/pull/27123",
+        "CommentsUrl": "https://api.github.com/repos/dotnet/aspnetcore/issues/27123/comments",
+        "EventsUrl": "https://api.github.com/repos/dotnet/aspnetcore/issues/27123/events",
+        "Number": 27123,
+        "State": {
+          "StringValue": "open"
+        },
+        "Title": "Prevent WebSockets from throwing during graceful shutdown",
+        "Body": "The same as #26914, but for 5.0.\r\n\r\nThis stops WebSockets from throwing as soon as Kestrel shutdown starts instead of after the ShutdownTimeout. This copies logic we already have in other places like [Http1ContentLengthMessageBody](https://github.com/dotnet/aspnetcore/blob/fe6a3fc747096308ac3acdf7d72437f6955490d5/src/Servers/Kestrel/Core/src/Internal/Http/Http1ContentLengthMessageBody.cs#L98).\r\n\r\nKestrel will call Transport.Input.CancelPendingRead() during shutdown so idle connections can wake up and shutdown gracefully. We manually call CancelPendingRead() to simulate this and ensure the Stream returned by UpgradeAsync doesn\u0027t throw in this case.\r\n\r\nAddresses #26482 for 5.0\r\n",
+        "User": {
+          "AvatarUrl": "https://avatars3.githubusercontent.com/u/54385?v=4",
+          "HtmlUrl": "https://github.com/halter73",
+          "Id": 54385,
+          "NodeId": "MDQ6VXNlcjU0Mzg1",
+          "Login": "halter73",
+          "Type": 0,
+          "Url": "https://api.github.com/users/halter73"
+        },
+        "Labels": [
+          {
+            "Id": 982191123,
+            "Url": "https://api.github.com/repos/dotnet/aspnetcore/labels/Servicing-consider",
+            "Name": "Servicing-consider",
+            "NodeId": "MDU6TGFiZWw5ODIxOTExMjM=",
+            "Color": "bfd4f2",
+            "Description": "Shiproom approval is required for the issue"
+          },
+          {
+            "Id": 1119602498,
+            "Url": "https://api.github.com/repos/dotnet/aspnetcore/labels/area-servers",
+            "Name": "area-servers",
+            "NodeId": "MDU6TGFiZWwxMTE5NjAyNDk4",
+            "Color": "5319e7",
+            "Description": "Includes: Kestrel, IIS, HttpAbstractions, libuv, AzureIntegration, ANCM"
+          },
+          {
+            "Id": 1133194700,
+            "Url": "https://api.github.com/repos/dotnet/aspnetcore/labels/servers-kestrel",
+            "Name": "servers-kestrel",
+            "NodeId": "MDU6TGFiZWwxMTMzMTk0NzAw",
+            "Color": "80f46b",
+            "Description": ""
+          }
+        ],
+        "Assignees": [],
+        "Milestone": {
+          "Url": "https://api.github.com/repos/dotnet/aspnetcore/milestones/57",
+          "HtmlUrl": "https://github.com/dotnet/aspnetcore/milestone/57",
+          "Id": 4525711,
+          "Number": 57,
+          "NodeId": "MDk6TWlsZXN0b25lNDUyNTcxMQ==",
+          "State": {
+            "StringValue": "open"
+          },
+          "Title": "5.0.0",
+          "Description": "",
+          "Creator": {
+            "SiteAdmin": true,
+            "AvatarUrl": "https://avatars3.githubusercontent.com/u/7574?v=4",
+            "HtmlUrl": "https://github.com/anurse",
+            "Id": 7574,
+            "NodeId": "MDQ6VXNlcjc1NzQ=",
+            "Login": "anurse",
+            "Type": 0,
+            "Url": "https://api.github.com/users/anurse"
+          },
+          "OpenIssues": 37,
+          "ClosedIssues": 166,
+          "CreatedAt": "2019-07-26T21:10:59+00:00",
+          "DueOn": "2020-11-10T08:00:00+00:00",
+          "UpdatedAt": "2020-10-22T21:48:34+00:00"
+        },
+        "Comments": 2,
+        "PullRequest": {
+          "Url": "https://api.github.com/repos/dotnet/aspnetcore/pulls/27123",
+          "HtmlUrl": "https://github.com/dotnet/aspnetcore/pull/27123",
+          "DiffUrl": "https://github.com/dotnet/aspnetcore/pull/27123.diff",
+          "PatchUrl": "https://github.com/dotnet/aspnetcore/pull/27123.patch"
+        },
+        "CreatedAt": "2020-10-22T21:48:24+00:00",
+        "UpdatedAt": "2020-10-22T22:19:02+00:00",
+        "Reactions": {
+          "Url": "https://api.github.com/repos/dotnet/aspnetcore/issues/27123/reactions"
+        }
+      }
+    ],
+    "Name": "aspnetcore",
+    "Owner": "dotnet"
+  },
+  {
+    "Issues": [
+      {
+        "Id": 717261365,
+        "NodeId": "MDExOlB1bGxSZXF1ZXN0NDk5ODUzNjkz",
+        "Url": "https://api.github.com/repos/dotnet/toolset/issues/4941",
+        "HtmlUrl": "https://github.com/dotnet/toolset/pull/4941",
+        "CommentsUrl": "https://api.github.com/repos/dotnet/toolset/issues/4941/comments",
+        "EventsUrl": "https://api.github.com/repos/dotnet/toolset/issues/4941/events",
+        "Number": 4941,
+        "State": {
+          "StringValue": "open"
+        },
+        "Title": "Suppress msb4181 from vstest",
+        "Body": "## Description\r\n\r\nSet AllowFailureWithoutError to prevent the error MSB4181 from being output.\r\n\r\nMSB4181: The \u0022Microsoft.TestPlatform.Build.Tasks.VSTestTask\u0022 task returned false but did not log an error.\r\n\r\nThis error is caused by VSTest outputting errors directly to the screen instead of using MSBuild, and is blocking some builds from finishing. The same fix was done in net5.0.\r\n\r\nThere is no workaround that I know of.\r\n\r\nThose are the changes included in the update: \r\n\r\nhttps://github.com/microsoft/vstest/commit/4f345e9718e6a158adcc88675634c4f209a0c537\r\nhttps://github.com/microsoft/vstest/commit/d8b591209204b2b947c495086c51a39d22c3bc14\r\n\r\nThe option is set to \u0022false\u0022 because the version of MSBuild that is being used has the option implemented backwards. This issue was reported to MSBuild and will be fixed in 16.9.\r\n\r\n## Customer Impact\r\n\r\nApart from fixing the error there isn\u0027t any.\r\n\r\n## Regression?\r\n\r\nNot sure what is being asked here, but this is not a fix of a regression.\r\n\r\n## Risk (see taxonomy)\r\n\r\nVery low. Tests can finish running with our without this change in place.\r\n\r\n## Link the PR to the original issue and/or the PR to master.\r\nFix https://github.com/dotnet/sdk/issues/13431\r\n\r\n## Packaging impact? (if a libraries change)\r\nI am not aware of any.\r\n",
+        "User": {
+          "AvatarUrl": "https://avatars2.githubusercontent.com/u/5735905?v=4",
+          "HtmlUrl": "https://github.com/nohwnd",
+          "Id": 5735905,
+          "NodeId": "MDQ6VXNlcjU3MzU5MDU=",
+          "Login": "nohwnd",
+          "Type": 0,
+          "Url": "https://api.github.com/users/nohwnd"
+        },
+        "Labels": [
+          {
+            "Id": 1056247768,
+            "Url": "https://api.github.com/repos/dotnet/toolset/labels/Servicing-consider",
+            "Name": "Servicing-consider",
+            "NodeId": "MDU6TGFiZWwxMDU2MjQ3NzY4",
+            "Color": "bfd4f2",
+            "Description": ""
+          }
+        ],
+        "Assignees": [],
+        "Milestone": {
+          "Url": "https://api.github.com/repos/dotnet/toolset/milestones/8",
+          "HtmlUrl": "https://github.com/dotnet/toolset/milestone/8",
+          "Id": 4778986,
+          "Number": 8,
+          "NodeId": "MDk6TWlsZXN0b25lNDc3ODk4Ng==",
+          "State": {
+            "StringValue": "open"
+          },
+          "Title": "3.1.1xx",
+          "Creator": {
+            "AvatarUrl": "https://avatars0.githubusercontent.com/u/75470?v=4",
+            "HtmlUrl": "https://github.com/nguerrera",
+            "Id": 75470,
+            "NodeId": "MDQ6VXNlcjc1NDcw",
+            "Login": "nguerrera",
+            "Type": 0,
+            "Url": "https://api.github.com/users/nguerrera"
+          },
+          "OpenIssues": 1,
+          "ClosedIssues": 2,
+          "CreatedAt": "2019-10-24T01:17:22+00:00",
+          "UpdatedAt": "2020-10-13T18:25:02+00:00"
+        },
+        "Comments": 2,
+        "PullRequest": {
+          "Url": "https://api.github.com/repos/dotnet/toolset/pulls/4941",
+          "HtmlUrl": "https://github.com/dotnet/toolset/pull/4941",
+          "DiffUrl": "https://github.com/dotnet/toolset/pull/4941.diff",
+          "PatchUrl": "https://github.com/dotnet/toolset/pull/4941.patch"
+        },
+        "CreatedAt": "2020-10-08T11:29:54+00:00",
+        "UpdatedAt": "2020-10-22T14:11:27+00:00",
+        "Reactions": {
+          "Url": "https://api.github.com/repos/dotnet/toolset/issues/4941/reactions"
+        }
+      }
+    ],
+    "Name": "toolset",
+    "Owner": "dotnet"
+  },
+  {
+    "Issues": [
+      {
+        "Id": 727817905,
+        "NodeId": "MDExOlB1bGxSZXF1ZXN0NTA4NjM4Njk2",
+        "Url": "https://api.github.com/repos/dotnet/runtime/issues/43739",
+        "HtmlUrl": "https://github.com/dotnet/runtime/pull/43739",
+        "CommentsUrl": "https://api.github.com/repos/dotnet/runtime/issues/43739/comments",
+        "EventsUrl": "https://api.github.com/repos/dotnet/runtime/issues/43739/events",
+        "Number": 43739,
+        "State": {
+          "StringValue": "open"
+        },
+        "Title": "Fix NegotiateStream handling of EOF",
+        "Body": "In my refactoring several months ago of NegotiateStream to use async/await, I broke its handling of EOF, with it throwing an exception instead of returning 0.  This fixes it to correctly handle EOF.\r\n\r\nI found this while writing a larger stream test suite, but for the purposes of this PR (and servicing), I\u0027ve only put up a single test for this condition.\r\n\r\ncc: @geoffkizer, @wfurt, @dotnet/ncl",
+        "User": {
+          "AvatarUrl": "https://avatars0.githubusercontent.com/u/2642209?v=4",
+          "HtmlUrl": "https://github.com/stephentoub",
+          "Id": 2642209,
+          "NodeId": "MDQ6VXNlcjI2NDIyMDk=",
+          "Login": "stephentoub",
+          "Type": 0,
+          "Url": "https://api.github.com/users/stephentoub"
+        },
+        "Labels": [
+          {
+            "Id": 1675385433,
+            "Url": "https://api.github.com/repos/dotnet/runtime/labels/Servicing-consider",
+            "Name": "Servicing-consider",
+            "NodeId": "MDU6TGFiZWwxNjc1Mzg1NDMz",
+            "Color": "bfd4f2",
+            "Description": "Issue for next servicing release review"
+          },
+          {
+            "Id": 1675386426,
+            "Url": "https://api.github.com/repos/dotnet/runtime/labels/area-Infrastructure-coreclr",
+            "Name": "area-Infrastructure-coreclr",
+            "NodeId": "MDU6TGFiZWwxNjc1Mzg2NDI2",
+            "Color": "d4c5f9",
+            "Description": ""
+          }
+        ],
+        "Assignees": [],
+        "Milestone": {
+          "Url": "https://api.github.com/repos/dotnet/runtime/milestones/72",
+          "HtmlUrl": "https://github.com/dotnet/runtime/milestone/72",
+          "Id": 5962601,
+          "Number": 72,
+          "NodeId": "MDk6TWlsZXN0b25lNTk2MjYwMQ==",
+          "State": {
+            "StringValue": "open"
+          },
+          "Title": "5.0.x",
+          "Description": "",
+          "Creator": {
+            "AvatarUrl": "https://avatars1.githubusercontent.com/u/10516582?v=4",
+            "HtmlUrl": "https://github.com/Anipik",
+            "Id": 10516582,
+            "NodeId": "MDQ6VXNlcjEwNTE2NTgy",
+            "Login": "Anipik",
+            "Type": 0,
+            "Url": "https://api.github.com/users/Anipik"
+          },
+          "OpenIssues": 5,
+          "CreatedAt": "2020-10-07T16:58:25+00:00",
+          "UpdatedAt": "2020-10-23T02:58:23+00:00"
+        },
+        "Comments": 4,
+        "PullRequest": {
+          "Url": "https://api.github.com/repos/dotnet/runtime/pulls/43739",
+          "HtmlUrl": "https://github.com/dotnet/runtime/pull/43739",
+          "DiffUrl": "https://github.com/dotnet/runtime/pull/43739.diff",
+          "PatchUrl": "https://github.com/dotnet/runtime/pull/43739.patch"
+        },
+        "CreatedAt": "2020-10-23T01:09:08+00:00",
+        "UpdatedAt": "2020-10-23T02:58:28+00:00",
+        "Reactions": {
+          "Url": "https://api.github.com/repos/dotnet/runtime/issues/43739/reactions"
+        }
+      }
+    ],
+    "Name": "runtime",
+    "Owner": "dotnet"
+  }
+]
